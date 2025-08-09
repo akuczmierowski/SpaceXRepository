@@ -2,6 +2,7 @@ package pl.andrzejkuczmierowski.mission;
 
 import lombok.Getter;
 import pl.andrzejkuczmierowski.rocket.Rocket;
+import pl.andrzejkuczmierowski.rocket.RocketStatus;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -18,6 +19,7 @@ public class Mission {
     public Mission(String name) {
         this.name = name;
         this.rockets = new LinkedHashSet<>();
+        this.status = MissionStatus.IN_PROGRESS;
     }
     //Presume that only name must be unique
     @Override
