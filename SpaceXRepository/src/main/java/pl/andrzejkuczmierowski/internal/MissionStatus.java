@@ -1,4 +1,4 @@
-package pl.andrzejkuczmierowski.mission;
+package pl.andrzejkuczmierowski.internal;
 
  public enum MissionStatus {
         SCHEDULED("Scheduled"), PENDING("Pending"), IN_PROGRESS("In progress"), ENDED("Ended");

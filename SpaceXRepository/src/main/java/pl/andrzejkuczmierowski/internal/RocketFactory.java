@@ -1,4 +1,4 @@
-package pl.andrzejkuczmierowski.rocket;
+package pl.andrzejkuczmierowski.internal;
 
 public class RocketFactory {
     public Rocket createRocket(String name){

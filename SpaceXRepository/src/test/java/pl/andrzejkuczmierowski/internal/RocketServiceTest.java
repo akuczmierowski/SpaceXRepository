@@ -1,28 +1,21 @@
-package pl.andrzejkuczmierowski;
+package pl.andrzejkuczmierowski.internal;
 
 import org.junit.jupiter.api.Test;
-import pl.andrzejkuczmierowski.mission.Mission;
-import pl.andrzejkuczmierowski.mission.MissionFactory;
-import pl.andrzejkuczmierowski.mission.MissionStatus;
-import pl.andrzejkuczmierowski.rocket.Rocket;
-import pl.andrzejkuczmierowski.rocket.RocketFactory;
-import pl.andrzejkuczmierowski.rocket.RocketService;
-import pl.andrzejkuczmierowski.rocket.RocketStatus;
+import pl.andrzejkuczmierowski.exception.AssignmentException;
 
-import java.util.Objects;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RocketServiceTest {
 
     @Test
-    public void assignMissionToRocketTest() {
+    public void assignMissionToRocketTest() throws AssignmentException {
         MissionFactory missionFactory = new MissionFactory();
         RocketFactory rocketFactory = new RocketFactory();
         RocketService rocketService = new RocketService();
         Mission mission = missionFactory.createMission("Moon");
         Rocket rocket = rocketFactory.createRocket("Luna1");
-        rocketService.assignMissionToRocket(mission, rocket);
+        rocketService.assignMission(mission, rocket);
         assertEquals(rocket.getStatus(), RocketStatus.IN_SPACE);
         assertEquals(mission.getStatus(), MissionStatus.IN_PROGRESS);
         assertTrue(mission.getRockets().contains(rocket));

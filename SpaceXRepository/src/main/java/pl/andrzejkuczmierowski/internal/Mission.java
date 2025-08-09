@@ -1,10 +1,7 @@
-package pl.andrzejkuczmierowski.mission;
+package pl.andrzejkuczmierowski.internal;
 
 import lombok.Getter;
-import pl.andrzejkuczmierowski.rocket.Rocket;
-import pl.andrzejkuczmierowski.rocket.RocketStatus;
 
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;

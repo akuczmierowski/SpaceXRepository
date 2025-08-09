@@ -1,4 +1,4 @@
-package pl.andrzejkuczmierowski.mission;
+package pl.andrzejkuczmierowski.internal;
 
 public class MissionFactory {
     public Mission createMission(String name) {

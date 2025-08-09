@@ -1,16 +1,7 @@
-package pl.andrzejkuczmierowski;
+package pl.andrzejkuczmierowski.internal;
 
 import org.junit.jupiter.api.Test;
 import pl.andrzejkuczmierowski.exception.AssignmentException;
-import pl.andrzejkuczmierowski.mission.Mission;
-import pl.andrzejkuczmierowski.mission.MissionFactory;
-import pl.andrzejkuczmierowski.mission.MissionService;
-import pl.andrzejkuczmierowski.mission.MissionStatus;
-import pl.andrzejkuczmierowski.repository.SpaceXRepository;
-import pl.andrzejkuczmierowski.rocket.Rocket;
-import pl.andrzejkuczmierowski.rocket.RocketFactory;
-import pl.andrzejkuczmierowski.rocket.RocketService;
-import pl.andrzejkuczmierowski.rocket.RocketStatus;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

@@ -1,9 +1,6 @@
-package pl.andrzejkuczmierowski;
+package pl.andrzejkuczmierowski.internal;
 
 import org.junit.jupiter.api.Test;
-import pl.andrzejkuczmierowski.rocket.Rocket;
-import pl.andrzejkuczmierowski.rocket.RocketFactory;
-import pl.andrzejkuczmierowski.rocket.RocketStatus;
 
 import java.util.Objects;
 

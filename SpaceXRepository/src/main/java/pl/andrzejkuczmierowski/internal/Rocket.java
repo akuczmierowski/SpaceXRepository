@@ -1,21 +1,16 @@
-package pl.andrzejkuczmierowski.rocket;
+package pl.andrzejkuczmierowski.internal;
 
 import lombok.Getter;
-import pl.andrzejkuczmierowski.mission.Mission;
 
 import java.util.Objects;
 
 public class Rocket {
     private final String name;
 
-    void setStatus(RocketStatus status) {
-        this.status = status;
-    }
-
     @Getter
     private RocketStatus status;
     @Getter
-    private Mission mission; // package-private mutation via RocketService
+    private Mission mission;
 
     Rocket(String name) {
         this.name = name;
@@ -32,5 +27,11 @@ public class Rocket {
     @Override
     public int hashCode() {
         return Objects.hashCode(name);
+    }
+    void setStatus(RocketStatus status) {
+        this.status = status;
+    }
+     void setMission(Mission mission) {
+        this.mission = mission;
     }
 }

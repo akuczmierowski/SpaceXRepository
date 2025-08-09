@@ -1,4 +1,4 @@
-package pl.andrzejkuczmierowski.rocket;
+package pl.andrzejkuczmierowski.internal;
 
 public enum RocketStatus {
     ON_GROUND,
