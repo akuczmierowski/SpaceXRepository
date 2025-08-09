@@ -10,7 +10,7 @@ public class MissionFactoryTest {
     public void createMissionTest() {
         MissionFactory missionFactory = new MissionFactory();
         Mission mission = missionFactory.createMission("Mars");
-        assertEquals(mission.getStatus(), MissionStatus.IN_PROGRESS);
+        assertEquals( MissionStatus.IN_PROGRESS,mission.getStatus());
         assertTrue(mission.getRockets().isEmpty());
     }
 }

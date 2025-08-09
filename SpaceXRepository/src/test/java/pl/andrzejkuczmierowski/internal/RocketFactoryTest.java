@@ -13,7 +13,7 @@ public class RocketFactoryTest {
     public void createRocket(){
         RocketFactory rocketFactory=new RocketFactory();
         Rocket rocket = rocketFactory.createRocket("Sputnik");
-        assertEquals(rocket.getStatus(), RocketStatus.ON_GROUND);
+        assertEquals( RocketStatus.ON_GROUND,rocket.getStatus());
         assertTrue(Objects.isNull(rocket.getMission()));
     }
 }
