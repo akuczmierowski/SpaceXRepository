@@ -1,18 +1,20 @@
 package pl.andrzejkuczmierowski.rocket;
 
+import lombok.Getter;
 import pl.andrzejkuczmierowski.mission.Mission;
 
 import java.util.Objects;
 
 public class Rocket {
     private final String name;
+    @Getter
     private RocketStatus status;
+    @Getter
     private Mission mission; // package-private mutation via RocketService
 
     Rocket(String name) {
         this.name = name;
         this.status = RocketStatus.ON_GROUND;
-        this.mission = null;
     }
     //Presume that only name must be unique
     @Override

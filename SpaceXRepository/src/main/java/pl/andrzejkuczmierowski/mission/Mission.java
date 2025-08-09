@@ -16,7 +16,7 @@ public class Mission {
     @Getter
     private MissionStatus status;
 
-    public Mission(String name) {
+     Mission(String name) {
         this.name = name;
         this.rockets = new LinkedHashSet<>();
         this.status = MissionStatus.IN_PROGRESS;
