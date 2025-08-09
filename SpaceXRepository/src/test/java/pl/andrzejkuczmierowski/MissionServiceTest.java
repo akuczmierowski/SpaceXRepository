@@ -19,6 +19,7 @@ public class MissionServiceTest {
         RocketFactory rocketFactory = new RocketFactory();
         Rocket rocket = rocketFactory.createRocket("MoonRacker");
         MissionService missionService = new MissionService();
+        missionService.assignRocketToMission(rocket,mission);
         assertTrue(mission.getRockets().contains(rocket));
         assertEquals(rocket.getStatus(), RocketStatus.IN_SPACE);
         assertEquals(rocket.getMission(), mission);
