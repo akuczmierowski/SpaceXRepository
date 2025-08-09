@@ -21,5 +21,6 @@ public class MissionServiceTest {
         MissionService missionService = new MissionService();
         assertTrue(mission.getRockets().contains(rocket));
         assertEquals(rocket.getStatus(), RocketStatus.IN_SPACE);
+        assertEquals(rocket.getMission(), mission);
     }
 }
