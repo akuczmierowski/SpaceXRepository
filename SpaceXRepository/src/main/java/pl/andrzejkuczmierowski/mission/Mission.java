@@ -13,13 +13,18 @@ public class Mission {
     private final String name;
     @Getter
     private final Set<Rocket> rockets;
+
+    void setStatus(MissionStatus status) {
+        this.status = status;
+    }
+
     @Getter
     private MissionStatus status;
 
      Mission(String name) {
         this.name = name;
         this.rockets = new LinkedHashSet<>();
-        this.status = MissionStatus.IN_PROGRESS;
+        this.status = MissionStatus.SCHEDULED;
     }
     //Presume that only name must be unique
     @Override
