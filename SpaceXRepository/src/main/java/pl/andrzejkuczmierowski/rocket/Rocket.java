@@ -7,6 +7,11 @@ import java.util.Objects;
 
 public class Rocket {
     private final String name;
+
+    void setStatus(RocketStatus status) {
+        this.status = status;
+    }
+
     @Getter
     private RocketStatus status;
     @Getter
