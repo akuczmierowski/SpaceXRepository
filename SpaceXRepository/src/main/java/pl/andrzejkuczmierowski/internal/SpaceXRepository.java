@@ -15,13 +15,17 @@ public class SpaceXRepository {
     public void assignRocketToMission(Rocket rocket, Mission mission) throws AssignmentException {
         if (mission.getStatus() == MissionStatus.ENDED) {
             throw new AssignmentException("Mission finished, cannot assign Rocket");
-        }else if (rocket.getMission()!=null){
+        } else if (rocket.getMission() != null) {
             throw new AssignmentException("Rocket already assigned to this Mission");
         }
-        missionService.changeStatus(mission,MissionStatus.IN_PROGRESS);
+        missionService.changeStatus(mission, MissionStatus.IN_PROGRESS);
         rocketService.changeStatus(rocket, RocketStatus.IN_SPACE);
+        if (rocket.getStatus() == RocketStatus.IN_REPAIR) {
+            mission.setStatus(MissionStatus.PENDING);
+        }
         rocket.setMission(mission);
         mission.getRockets().add(rocket);
     }
+
 
 }

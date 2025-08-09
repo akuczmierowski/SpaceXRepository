@@ -36,4 +36,6 @@ public class SpaceXRepositoryTest {
         spaceXRepository.assignRocketToMission(rocket, missionMars);
         assertThrows(AssignmentException.class, () -> spaceXRepository.assignRocketToMission(rocket, missionMoon));
     }
+
+
 }
