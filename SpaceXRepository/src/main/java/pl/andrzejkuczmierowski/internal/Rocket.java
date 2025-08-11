@@ -16,6 +16,12 @@ public class Rocket {
         this.name = name;
         this.status = RocketStatus.ON_GROUND;
     }
+    void setStatus(RocketStatus status) {
+        this.status = status;
+    }
+    void setMission(Mission mission) {
+        this.mission = mission;
+    }
     //Presume that only name must be unique
     @Override
     public boolean equals(Object o) {
@@ -27,11 +33,5 @@ public class Rocket {
     @Override
     public int hashCode() {
         return Objects.hashCode(name);
-    }
-    void setStatus(RocketStatus status) {
-        this.status = status;
-    }
-     void setMission(Mission mission) {
-        this.mission = mission;
     }
 }

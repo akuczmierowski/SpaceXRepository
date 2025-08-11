@@ -2,15 +2,14 @@ package pl.andrzejkuczmierowski.internal;
 
 import lombok.Getter;
 
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
 public class Mission {
     private final String name;
-    @Getter
     private final Set<Rocket> rockets;
-
     void setStatus(MissionStatus status) {
         this.status = status;
     }
@@ -18,11 +17,27 @@ public class Mission {
     @Getter
     private MissionStatus status;
 
-     Mission(String name) {
+    Mission(String name) {
         this.name = name;
         this.rockets = new LinkedHashSet<>();
         this.status = MissionStatus.SCHEDULED;
     }
+
+    Set<Rocket> getRockets() {
+        return Collections.unmodifiableSet(rockets);
+    }
+
+    void addRocket(Rocket rocket) {
+        rockets.add(rocket);
+    }
+
+    void removeRocket(Rocket rocket) {
+        rockets.remove(rocket);
+    }
+    void removeAllRockets() {
+        rockets.clear();
+    }
+
     //Presume that only name must be unique
     @Override
     public boolean equals(Object o) {

@@ -5,14 +5,14 @@ import pl.andrzejkuczmierowski.exception.AssignmentException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MissionServiceTest {
+public class MissionRepositoryTest {
 
     @Test
     public void changeMissionStatusTest() throws AssignmentException {
         MissionFactory missionFactory = new MissionFactory();
         Mission mission = missionFactory.createMission("Moon");
-        MissionService missionService = new MissionService();
-        missionService.changeStatus(mission, MissionStatus.SCHEDULED);
+        MissionRepository missionRepository = new MissionRepository();
+        missionRepository.changeStatus(mission, MissionStatus.SCHEDULED);
         assertEquals(MissionStatus.SCHEDULED, mission.getStatus());
     }
 
@@ -21,31 +21,32 @@ public class MissionServiceTest {
         //having
         MissionFactory missionFactory = new MissionFactory();
         Mission mission = missionFactory.createMission("Moon");
-        MissionService missionService = new MissionService();
-        RocketService rocketService = new RocketService();
-        SpaceXRepository spaceXRepository = new SpaceXRepository(missionService, rocketService);
+        MissionRepository missionRepository = new MissionRepository();
+        RocketRepository rocketRepository = new RocketRepository();
+        SpaceXRepository spaceXRepository = new SpaceXRepository(missionRepository, rocketRepository);
         RocketFactory rocketFactory = new RocketFactory();
         Rocket rocket = rocketFactory.createRocket("Luna");
         //when
-        missionService.changeStatus(mission, MissionStatus.ENDED);
+        missionRepository.changeStatus(mission, MissionStatus.ENDED);
         //then
         assertThrows(AssignmentException.class, () -> spaceXRepository.assignRocketToMission(rocket, mission));
     }
 
     @Test
     public void changeMissionStatusToEnded() throws AssignmentException {
+        //having
         MissionFactory missionFactory = new MissionFactory();
         Mission mission = missionFactory.createMission("Moon");
-        MissionService missionService = new MissionService();
-        RocketService rocketService = new RocketService();
-        SpaceXRepository spaceXRepository = new SpaceXRepository(missionService, rocketService);
+        MissionRepository missionRepository = new MissionRepository();
+        RocketRepository rocketRepository = new RocketRepository();
+        SpaceXRepository spaceXRepository = new SpaceXRepository(missionRepository, rocketRepository);
         RocketFactory rocketFactory = new RocketFactory();
         Rocket rocketLuna = rocketFactory.createRocket("Luna");
         Rocket rocketMoonRacker = rocketFactory.createRocket("MoonRacker");
         spaceXRepository.assignRocketToMission(rocketLuna, mission);
         spaceXRepository.assignRocketToMission(rocketMoonRacker, mission);
         //when
-        missionService.changeStatus(mission, MissionStatus.ENDED);
+        missionRepository.changeStatus(mission, MissionStatus.ENDED);
         //then
         assertTrue(mission.getRockets().isEmpty());
     }

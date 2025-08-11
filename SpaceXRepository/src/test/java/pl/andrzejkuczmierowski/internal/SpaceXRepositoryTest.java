@@ -9,25 +9,26 @@ public class SpaceXRepositoryTest {
 
     @Test
     public void assignValidRocketToValidMission() throws AssignmentException {
-        MissionService missionService = new MissionService();
-        RocketService rocketService = new RocketService();
-        SpaceXRepository spaceXRepository = new SpaceXRepository(missionService, rocketService);
+        MissionRepository missionRepository = new MissionRepository();
+        RocketRepository rocketRepository = new RocketRepository();
+        SpaceXRepository spaceXRepository = new SpaceXRepository(missionRepository, rocketRepository);
         MissionFactory missionFactory = new MissionFactory();
         Mission mission = missionFactory.createMission("Mars");
         RocketFactory rocketFactory = new RocketFactory();
         Rocket rocket = rocketFactory.createRocket("Luna");
         spaceXRepository.assignRocketToMission(rocket, mission);
         assertTrue(mission.getRockets().contains(rocket));
-        assertEquals(rocket.getStatus(), RocketStatus.IN_SPACE);
-        assertEquals(mission.getStatus(), MissionStatus.IN_PROGRESS);
+        assertEquals(RocketStatus.IN_SPACE, rocket.getStatus());
+        assertEquals(MissionStatus.IN_PROGRESS, mission.getStatus());
         assertEquals(rocket.getMission(), mission);
 
     }
+
     @Test
     public void assignSameRocketToManyMissions() throws AssignmentException {
-        MissionService missionService = new MissionService();
-        RocketService rocketService = new RocketService();
-        SpaceXRepository spaceXRepository = new SpaceXRepository(missionService, rocketService);
+        MissionRepository missionRepository = new MissionRepository();
+        RocketRepository rocketRepository = new RocketRepository();
+        SpaceXRepository spaceXRepository = new SpaceXRepository(missionRepository, rocketRepository);
         MissionFactory missionFactory = new MissionFactory();
         RocketFactory rocketFactory = new RocketFactory();
         Rocket rocket = rocketFactory.createRocket("Luna");
@@ -37,5 +38,17 @@ public class SpaceXRepositoryTest {
         assertThrows(AssignmentException.class, () -> spaceXRepository.assignRocketToMission(rocket, missionMoon));
     }
 
-
+    @Test
+    public void addMission() {
+        MissionRepository missionRepository = new MissionRepository();
+        RocketRepository rocketRepository = new RocketRepository();
+        SpaceXRepository spaceXRepository = new SpaceXRepository(missionRepository, rocketRepository);
+        MissionFactory missionFactory = new MissionFactory();
+        Mission mission=missionFactory.createMission("Mars");
+        spaceXRepository.addMission(mission);
+        spaceXRepository.addMission(mission);
+        spaceXRepository.addMission(mission);
+        assertTrue(missionRepository.getMissions().contains(mission));
+        assertEquals(missionRepository.getMissions().size(), 1);
+    }
 }

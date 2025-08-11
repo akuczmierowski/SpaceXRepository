@@ -5,21 +5,21 @@ import pl.andrzejkuczmierowski.exception.AssignmentException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RocketServiceTest {
+public class RocketRepositoryTest {
 
     @Test
     public void changeRocketStatusToRepairTest() throws AssignmentException {
         //having
         MissionFactory missionFactory = new MissionFactory();
         RocketFactory rocketFactory = new RocketFactory();
-        RocketService rocketService = new RocketService();
-        MissionService missionService = new MissionService();
+        RocketRepository rocketRepository = new RocketRepository();
+        MissionRepository missionRepository = new MissionRepository();
         Mission mission = missionFactory.createMission("Moon");
         Rocket rocket = rocketFactory.createRocket("Luna1");
-        SpaceXRepository spaceXRepository = new SpaceXRepository(missionService, rocketService);
+        SpaceXRepository spaceXRepository = new SpaceXRepository(missionRepository, rocketRepository);
         //when
         spaceXRepository.assignRocketToMission(rocket, mission);
-        rocketService.changeStatus(rocket, RocketStatus.IN_REPAIR);
+        rocketRepository.changeStatus(rocket, RocketStatus.IN_REPAIR);
         //then
         assertEquals(MissionStatus.PENDING, mission.getStatus());
     }

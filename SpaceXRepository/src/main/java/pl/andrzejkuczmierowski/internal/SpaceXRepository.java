@@ -4,12 +4,12 @@ import pl.andrzejkuczmierowski.exception.AssignmentException;
 
 public class SpaceXRepository {
 
-    private final MissionService missionService;
-    private final RocketService rocketService;
+    private final MissionRepository missionRepository;
+    private final RocketRepository rocketRepository;
 
-    public SpaceXRepository(MissionService missionService, RocketService rocketService) {
-        this.missionService = missionService;
-        this.rocketService = rocketService;
+    public SpaceXRepository(MissionRepository missionRepository, RocketRepository rocketRepository) {
+        this.missionRepository = missionRepository;
+        this.rocketRepository = rocketRepository;
     }
 
     public void assignRocketToMission(Rocket rocket, Mission mission) throws AssignmentException {
@@ -18,13 +18,13 @@ public class SpaceXRepository {
         } else if (rocket.getMission() != null) {
             throw new AssignmentException("Rocket already assigned to this Mission");
         }
-        missionService.changeStatus(mission, MissionStatus.IN_PROGRESS);
-        rocketService.changeStatus(rocket, RocketStatus.IN_SPACE);
-        if (rocket.getStatus() == RocketStatus.IN_REPAIR) {
-            mission.setStatus(MissionStatus.PENDING);
-        }
-        rocket.setMission(mission);
-        mission.getRockets().add(rocket);
+
+        rocketRepository.addMission(mission, rocket);
+        missionRepository.addRocket(mission, rocket);
+    }
+
+    public void addMission(Mission mission) {
+        missionRepository.addMission(mission);
     }
 
 
