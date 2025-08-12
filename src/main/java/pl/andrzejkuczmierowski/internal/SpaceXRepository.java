@@ -1,15 +1,17 @@
 package pl.andrzejkuczmierowski.internal;
 
 import pl.andrzejkuczmierowski.exception.AssignmentException;
+import pl.andrzejkuczmierowski.repository.MissionRepositoryInterface;
+import pl.andrzejkuczmierowski.repository.RocketRepositoryInterface;
 
 import java.util.Set;
 
 public class SpaceXRepository {
 
-    private final MissionRepository missionRepository;
-    private final RocketRepository rocketRepository;
+    private final MissionRepositoryInterface missionRepository;
+    private final RocketRepositoryInterface rocketRepository;
 
-    public SpaceXRepository(MissionRepository missionRepository, RocketRepository rocketRepository) {
+    public SpaceXRepository(MissionRepositoryInterface missionRepository, RocketRepositoryInterface rocketRepository) {
         this.missionRepository = missionRepository;
         this.rocketRepository = rocketRepository;
     }
