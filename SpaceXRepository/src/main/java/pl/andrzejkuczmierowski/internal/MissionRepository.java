@@ -52,9 +52,16 @@ class MissionRepository implements MissionRepositoryInterface {
     public void changeStatus(Mission mission, MissionStatus newStatus) {
         if (newStatus == MissionStatus.ENDED) {
             mission.setStatus(newStatus);
+            mission.getRockets().forEach(rocket -> rocket.setMission(null));
             mission.removeAllRockets();
         }
         mission.setStatus(newStatus);
+    }
+
+    public String getSummary(){
+        StringBuilder sb = new StringBuilder();
+        missions.forEach(mission -> sb.append(mission.toString()));
+        return sb.toString();
     }
 
 }

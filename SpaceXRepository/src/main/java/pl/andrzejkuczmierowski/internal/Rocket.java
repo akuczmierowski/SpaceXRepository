@@ -34,4 +34,10 @@ public class Rocket {
     public int hashCode() {
         return Objects.hashCode(name);
     }
+
+    @Override
+    public String toString() {
+        return "o " + name +
+                " - " + status.getStatus();
+    }
 }

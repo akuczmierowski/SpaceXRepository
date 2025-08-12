@@ -2,6 +2,8 @@ package pl.andrzejkuczmierowski.internal;
 
 import pl.andrzejkuczmierowski.exception.AssignmentException;
 
+import java.util.Set;
+
 public class SpaceXRepository {
 
     private final MissionRepository missionRepository;
@@ -25,6 +27,14 @@ public class SpaceXRepository {
 
     public void addMission(Mission mission) {
         missionRepository.addMission(mission);
+    }
+
+    public void addRocket(Rocket rocket) {
+        rocketRepository.addRocket(rocket);
+    }
+
+    public void addRockets(Mission mission, Set<Rocket> rockets) {
+        mission.addAll(rockets);
     }
 
 

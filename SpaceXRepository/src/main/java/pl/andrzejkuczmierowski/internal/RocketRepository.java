@@ -7,12 +7,16 @@ import java.util.Set;
 
 class RocketRepository implements RocketRepositoryInterface {
 
+
+
     private final Set<Rocket> rockets;
 
     RocketRepository() {
         this.rockets = new HashSet<>();
     }
-
+    public Set<Rocket> getRockets() {
+        return rockets;
+    }
     @Override
     public void addMission(Mission mission, Rocket rocket) {
         if (rocket.getMission() != null) {

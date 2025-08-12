@@ -23,4 +23,5 @@ public class RocketRepositoryTest {
         //then
         assertEquals(MissionStatus.PENDING, mission.getStatus());
     }
+
 }
