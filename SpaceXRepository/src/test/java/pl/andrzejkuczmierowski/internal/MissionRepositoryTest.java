@@ -9,10 +9,13 @@ public class MissionRepositoryTest {
 
     @Test
     public void changeMissionStatusTest() throws AssignmentException {
+        //having
         MissionFactory missionFactory = new MissionFactory();
         Mission mission = missionFactory.createMission("Moon");
         MissionRepository missionRepository = new MissionRepository();
+        //when
         missionRepository.changeStatus(mission, MissionStatus.SCHEDULED);
+        //then
         assertEquals(MissionStatus.SCHEDULED, mission.getStatus());
     }
 
@@ -55,6 +58,7 @@ public class MissionRepositoryTest {
 
     @Test
     public void getSummary() throws AssignmentException {
+        //having
         MissionRepository missionRepository = new MissionRepository();
         RocketRepository rocketRepository = new RocketRepository();
         SpaceXRepository spaceXRepository = new SpaceXRepository(missionRepository, rocketRepository);
@@ -76,7 +80,9 @@ public class MissionRepositoryTest {
         spaceXRepository.addMission(missionMars);
         spaceXRepository.addMission(missionLuna1);
         spaceXRepository.addMission(missionTransit);
+        //when
         String summary = missionRepository.getSummary();
+        //then
         assertTrue(summary.contains("Luna 1 - In progress - Dragons: 2"));
         assertTrue(summary.contains("Dragon 1 - In space"));
         assertTrue(summary.contains("Mars - Scheduled - Dragons: 0"));
