@@ -37,5 +37,8 @@ public class SpaceXRepository {
         mission.addAll(rockets);
     }
 
+    public String getMissionsSummary() {
+        return missionRepository.getSummary();
+    }
 
 }
