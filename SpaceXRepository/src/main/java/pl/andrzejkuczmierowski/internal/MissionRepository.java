@@ -3,15 +3,14 @@ package pl.andrzejkuczmierowski.internal;
 import pl.andrzejkuczmierowski.exception.AssignmentException;
 import pl.andrzejkuczmierowski.repository.MissionRepositoryInterface;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 class MissionRepository implements MissionRepositoryInterface {
 
     private final Set<Mission> missions;
 
     MissionRepository() {
-        this.missions = new HashSet<>();
+        this.missions = new LinkedHashSet<>();
     }
 
     @Override
@@ -60,8 +59,11 @@ class MissionRepository implements MissionRepositoryInterface {
 
     @Override
     public String getSummary() {
+        MissionComparator mc = new MissionComparator();
+        List<Mission> missionList = new ArrayList<>(missions);
+        Collections.sort(missionList, mc.reversed());
         StringBuilder sb = new StringBuilder();
-        missions.forEach(mission -> sb.append(mission.toString()));
+        missionList.forEach(mission -> sb.append(mission.toString()));
         return sb.toString();
     }
 

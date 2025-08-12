@@ -2,10 +2,7 @@ package pl.andrzejkuczmierowski.internal;
 
 import lombok.Getter;
 
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Mission {
     private final String name;
@@ -44,6 +41,8 @@ public class Mission {
         this.rockets.addAll(rockets);
     }
 
+
+
     //Presume that only name must be unique
     @Override
     public boolean equals(Object o) {
@@ -77,4 +76,6 @@ public class Mission {
 
         return sb.toString();
     }
+
+
 }

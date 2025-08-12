@@ -3,16 +3,15 @@ package pl.andrzejkuczmierowski.internal;
 import pl.andrzejkuczmierowski.repository.RocketRepositoryInterface;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 class RocketRepository implements RocketRepositoryInterface {
 
-
-
     private final Set<Rocket> rockets;
 
     RocketRepository() {
-        this.rockets = new HashSet<>();
+        this.rockets = new LinkedHashSet<>();
     }
     public Set<Rocket> getRockets() {
         return rockets;
