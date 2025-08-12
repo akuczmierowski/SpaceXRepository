@@ -70,7 +70,7 @@ public class MissionRepositoryTest {
         spaceXRepository.addMission(missionLuna1);
         String summary = missionRepository.getSummary();
         assertTrue(summary.contains("Luna 1 - In progress - Dragons: 2"));
-        assertTrue(summary.contains("Dragon 1 – On ground"));
+        assertTrue(summary.contains("Dragon 1 - In space"));
         assertTrue(summary.contains("Mars - Scheduled - Dragons: 0"));
 
     }
