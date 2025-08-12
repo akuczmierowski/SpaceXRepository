@@ -20,4 +20,6 @@ public interface MissionRepositoryInterface {
 
     void changeStatus(Mission mission, MissionStatus newStatus);
 
+    String getSummary();
+
 }

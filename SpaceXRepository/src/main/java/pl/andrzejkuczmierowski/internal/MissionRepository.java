@@ -37,7 +37,7 @@ class MissionRepository implements MissionRepositoryInterface {
         if (rocket.getStatus() == RocketStatus.IN_REPAIR) {
             mission.setStatus(MissionStatus.PENDING);
         }
-        if(mission.getRockets().isEmpty()) {
+        if (mission.getRockets().isEmpty()) {
             mission.setStatus(MissionStatus.IN_PROGRESS);
         }
         mission.addRocket(rocket);
@@ -58,7 +58,8 @@ class MissionRepository implements MissionRepositoryInterface {
         mission.setStatus(newStatus);
     }
 
-    public String getSummary(){
+    @Override
+    public String getSummary() {
         StringBuilder sb = new StringBuilder();
         missions.forEach(mission -> sb.append(mission.toString()));
         return sb.toString();
